@@ -11,4 +11,14 @@ config:
 services:
   appserver:
     build:
-      - composer install
+      composer install
+    overrides:
+      image: lando/php:7.3-with-node12
+      build:
+        context: ./
+        dockerfile: Dockerfile.node
+tooling:
+  node:
+    service: appserver
+  npm:
+    service: appserver
