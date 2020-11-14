@@ -8,3 +8,7 @@ config:
   database: mysql:5.7
   drush: false
   xdebug: false
+services:
+  appserver:
+    build:
+      - composer install
