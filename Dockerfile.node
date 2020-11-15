@@ -7,7 +7,7 @@ ENV NODE_VERSION=12
 RUN curl -sL "https://deb.nodesource.com/setup_${NODE_VERSION}.x" | bash - \
   && apt-get install -y nodejs
 
-# EXPOSE 53
+#EXPOSE 3000
 # ports: 
 #   3000:3000
 
