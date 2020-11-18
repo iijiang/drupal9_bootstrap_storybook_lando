@@ -26,10 +26,10 @@ lando drush theme:enable mysub
 lando npm install -prefix web/themes/custom/mysub/
 
 # Run browsersync
-lando npm watch -prefix web/themes/custom/mysub/
+lando npm run watch -prefix web/themes/custom/mysub/
 
 # Run browsersync and storybook
-lando npm crazy -prefix web/themes/custom/mysub/
+lando npm run crazy -prefix web/themes/custom/mysub/
 ```
 
 # Lando Usage examples
