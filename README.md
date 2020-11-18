@@ -20,7 +20,7 @@ lando composer install
 composer install (local composer, please ensure local composer version = lando composer version)
 
 # Enable sub theme
-lando theme:enable mysub
+lando drush theme:enable mysub
 
 # Install node packages under custom theme
 lando npm install -prefix web/themes/custom/mysub/
