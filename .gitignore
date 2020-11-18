@@ -4,4 +4,4 @@ web/sites/default/settings.php
 web/modules/contrib/
 web/themes/contrib/
 node_modules
-web/themes/custom/
+web/themes/custom/mysub/assets

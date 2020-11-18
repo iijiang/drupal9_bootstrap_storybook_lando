@@ -1,0 +1,28 @@
+sm:
+  label: Mobile
+  mediaQuery: '(max-width: 576px)'
+  weight: 1
+  multipliers:
+    - 1x
+    - 2x
+md:
+  label: Tablet
+  mediaQuery: '(min-width: 577px) and (max-width: 768px)'
+  weight: 1
+  multipliers:
+    - 1x
+    - 2x
+lg:
+  label: Desktop
+  mediaQuery: '(min-width: 769px)  and (max-width: 1199px)'
+  weight: 1
+  multipliers:
+    - 1x
+    - 2x
+xl:
+  label: Large Desktop
+  mediaQuery: '(min-width: 1200px)'
+  weight: 1
+  multipliers:
+    - 1x
+    - 2x

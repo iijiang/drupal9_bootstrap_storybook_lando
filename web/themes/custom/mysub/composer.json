@@ -1,0 +1,26 @@
+{
+    "name": "drupal/bootstrap_storybook",
+    "description": "Drupal theme with built-in support for StorybookJS, Bootstrap 4 and BrowserSync out of the box, leveraging laravel-mix and webpack for better asset management.",
+    "type": "drupal-theme",
+    "homepage": "https://www.drupal.org/project/bootstrap_storybook",
+    "authors": [{
+        "name": "Sohail Lajevardi",
+        "role": "Maintainer"
+    }],
+    "support": {
+        "issues": "https://www.drupal.org/project/issues/bootstrap_storybook"
+    },
+    "license": "GPL-2.0-or-later",
+    "minimum-stability": "dev",
+    "require": {
+        "drupal/components": "^2.0"
+    },
+    "require-dev": {
+        "consolidation/robo": "^1.0.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Drush\\Commands\\bootstrap_storybook\\": "Commands/bootstrap_storybook/"
+        }
+    }
+}

@@ -1,0 +1,11 @@
+{#
+/**
+ * @file
+ * Template for an image field.
+ */
+#}
+{% include '@bootstrap_storybook/image/image.twig' with {
+  src: attributes.src,
+  alt: attributes.alt,
+  responsive: true,
+} %}

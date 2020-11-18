@@ -1,0 +1,212 @@
+/*
+ |--------------------------------------------------------------------------
+ | Helper mixins, feel free to add/remove any that you might not use
+ | Won't be rendered in the output if not used
+ |--------------------------------------------------------------------------
+ */
+
+/// Word Wrap fix for long spaceless strings
+/// @link https://css-tricks.com/snippets/css/prevent-long-urls-from-breaking-out-of-container/
+@mixin word-wrap() {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  word-break: break-word;
+  hyphens: auto;
+}
+
+/// Ellipsis fix for long spaceless strings
+/// @link https://css-tricks.com/snippets/css/prevent-long-urls-from-breaking-out-of-container/
+@mixin ellipsis() {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+/// Mixin - Full Width, even outside container
+/// @param {bool} $undo [false]
+/// @link https://css-tricks.com/full-width-containers-limited-width-parents/ Source
+@mixin full-width($undo: false) {
+  @if $undo {
+    margin-left: 0;
+    margin-right: 0;
+    position: static;
+    left: auto;
+    right: auto;
+    width: auto;
+    max-width: 100%;
+  }
+
+  @else {
+    width: 100vw;
+    max-width: 100vw;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+  }
+}
+
+/// List of svg elements so we don't have to type them all out multiple times.
+@mixin svg-elements() {
+
+  svg,
+  g,
+  circle,
+  ellipse,
+  line,
+  path,
+  polygon,
+  polyline,
+  rect,
+  text {
+    @content;
+  }
+}
+
+// Rem to PX
+@function calculateRem($size) {
+  $remSize: $size / 16px;
+  @return #{$remSize}rem;
+}
+
+@mixin rem-calc($size) {
+  font-size: $size; //Fallback in px
+  font-size: calculateRem($size);
+}
+
+// Responsive font sizes
+@mixin font-size($fs-map, $fs-breakpoints: $grid-breakpoints) {
+
+  @each $fs-breakpoint,
+  $fs-font-size in $fs-map {
+    @if $fs-breakpoint==null {
+      @include make-font-size($fs-font-size);
+    }
+
+    @else {
+      @if map-has-key($fs-breakpoints, $fs-breakpoint) {
+        $fs-breakpoint: map-get($fs-breakpoints, $fs-breakpoint);
+      }
+
+      @media screen and (min-width: $fs-breakpoint) {
+        @include make-font-size($fs-font-size);
+      }
+    }
+  }
+}
+
+@mixin make-font-size($fs-font-size) {
+  @if type-of($fs-font-size)=='list' {
+    font-size: nth($fs-font-size, 1);
+
+    @if (length($fs-font-size) > 1) {
+      line-height: nth($fs-font-size, 2);
+    }
+  }
+
+  @else {
+    font-size: $fs-font-size;
+  }
+}
+
+//  STYLE INPUT PLACEHOLDERS
+//  ---------------------------------------------------------------------------------------
+@mixin input-placeholder {
+  &.placeholder {
+    @content;
+  }
+
+  &:-moz-placeholder {
+    @content;
+  }
+
+  &::-moz-placeholder {
+    @content;
+  }
+
+  &:-ms-input-placeholder {
+    @content;
+  }
+
+  &::-webkit-input-placeholder {
+    @content;
+  }
+}
+
+// Media query helpers
+// -----------------------------------------------------------------------------
+
+// Min width media queries
+$fix-mqs: false !default;
+
+// Media query min-width based
+@mixin mq($name) {
+  @if $fix-mqs {
+    @if $fix-mqs>=map-get($grid-breakpoints, $name) {
+      @content;
+    }
+  }
+
+  @else {
+    @if not map-has-key($grid-breakpoints, $name) {
+      @warn "Warning: `#{$name}` is not a valid breakpoint name, get your shit together!";
+    }
+
+    @else {
+      @media (min-width: map-get($grid-breakpoints, $name)) {
+        @content;
+      }
+    }
+  }
+}
+
+// Max width media queries, use rarely if any
+@mixin mq-max($name) {
+  @if $fix-mqs {
+    @if $fix-mqs>=map-get($grid-breakpoints, $name) {
+      @content;
+    }
+  }
+
+  @else {
+    @if not map-has-key($grid-breakpoints, $name) {
+      @warn "Warning: `#{$name}` is not a valid breakpoint name, get your shit together!";
+    }
+
+    @else {
+      @media (max-width: map-get($grid-breakpoints, $name)) {
+        @content;
+      }
+    }
+  }
+}
+
+//  Image + icons
+//  ---------------------------------------------------------------------------------------
+$defaultIcon: "svg";
+
+@mixin icon($name, $type: $defaultIcon) {
+  @if ($type !=$defaultIcon) {
+    background-image: url("/themes/custom/mysub/assets/icons/"+$name+ '.'+$type);
+  }
+
+  // Consider the defaultIcon type as SVG
+  @else {
+    $type: $defaultIcon;
+    background-image: url("/themes/custom/mysub/assets/icons/"+$name+".svg");
+  }
+}
+
+$defaultImage: "png";
+
+@mixin image($name, $type: $defaultImage) {
+  @if ($type !=$defaultImage) {
+    background-image: url("/themes/custom/mysub/assets/images/"+$name+ '.'+ $type);
+  }
+
+  // Consider the defaultImage type as JPG
+  @else {
+    background-image: url("/themes/custom/mysub/assets/images/"+$name+".png");
+  }
+}

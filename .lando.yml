@@ -17,7 +17,10 @@ services:
       build:
         context: ./
         dockerfile: Dockerfile.node
-    portforward: 3000
+      ports: 
+        - 3000:3000
+        - 3001:3001
+        - 3004:3004
 tooling:
   node:
     service: appserver

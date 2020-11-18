@@ -1,0 +1,14 @@
+style:
+  version: VERSION
+  css:
+    theme:
+      assets/css/main.style.css: { weight: -1000 }
+  js:
+    assets/js/main.script.js: { weight: 0 }
+  dependencies:
+    - core/jquery
+    - core/drupal
+    - core/drupalSettings
+
+# We create component libraries automatically, no need to be listed here
+# see `includes/theme.inc` for more info

@@ -1,0 +1,22 @@
+{#
+/**
+ * @file
+ * Template for all pages.
+ */
+#}
+<div class="page">
+  {% block pageNavigation %}
+    {% include "@mysub/section/navigation.twig" %}
+  {% endblock %}
+
+  <main class="pt-5 pb-5">
+    {% block pageMain %}
+      {% include "@mysub/section/header.twig" %}
+      {% include "@mysub/section/content.twig" %}
+    {% endblock %}
+  </main>
+
+  {% block pageFooter %}
+    {% include "@mysub/section/footer.twig" %}
+  {% endblock %}
+</div>

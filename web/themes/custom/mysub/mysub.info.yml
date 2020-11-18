@@ -1,0 +1,37 @@
+name: mysub
+description: A theme based on bootstrap_storybook.
+screenshot: screenshot.png
+core_version_requirement: ^8 || ^9
+# version: VERSION
+engine: twig
+type: theme
+base theme: bootstrap_storybook
+
+regions:
+  navbar_branding: Navbar branding
+  navbar_left:  Navbar left
+  navbar_right: Navbar right
+  header: Header
+  content: Content
+  page_bottom: Page bottom
+  footer: Footer
+
+libraries:
+  - mysub/style
+
+libraries-override:
+  bootstrap_storybook/bootstrap: false
+  bootstrap_storybook/style: false
+
+ckeditor_stylesheets:
+  - assets/css/main.style.css
+
+component-libraries:
+  mysub:
+    paths:
+      - ./src/components
+
+# Information added by Drupal.org packaging script on 2020-11-14
+version: '3.1.7'
+project: 'bootstrap_storybook'
+datestamp: 1605397810

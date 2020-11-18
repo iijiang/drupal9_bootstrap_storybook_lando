@@ -1,0 +1,29 @@
+{#
+/**
+ * @file
+ * Template for a button component.
+ *
+ * Available config:
+ * - type: primary | secondary | success | danger | warning | info | light | dark & rest of bootstrap classes
+ * - outline: true | false
+ * - tag: button, a, input
+ * - value: string
+ * - button_attributes: Attributes array.
+ */
+#}
+{% set tag = tag ?? 'button' %}
+
+{% set button_classes = [
+  'btn',
+  type ? 'btn-' ~ type,
+]|merge(button_utility_classes ? button_utility_classes : []) %}
+
+{% if tag == 'input' %}
+  <input{{ attributes.addClass(button_classes) }} />
+
+{% elseif tag == 'button' %}
+  <button{{ attributes.addClass(button_classes) }}>{{ value }}</button>
+
+{% else %}
+  <{{ tag }} {{ attributes.addClass(button_classes) }} {{ link ? 'href=' ~ link }} {{ target ? 'target=' ~ target }}>{{ value }}</{{ tag }}>
+{% endif %}
