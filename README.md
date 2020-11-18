@@ -11,7 +11,7 @@ php 7.3
 # Usage
 
 ```
-# Doing a drush site install
+# Start lando drupal site
 lando start
 
 # Install dependencies
