@@ -1,5 +1,8 @@
 name: mydrupal9
 recipe: drupal9
+proxy:
+  appserver:
+    - drupal9.lndo.site
 config:
   php: '7.3'
   composer_version: '2.0.7'
@@ -20,7 +23,7 @@ services:
       ports: 
         - 3000:3000
         - 3001:3001
-        - 3004:3004
+        - 3004:3004 
 tooling:
   node:
     service: appserver

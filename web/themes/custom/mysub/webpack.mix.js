@@ -27,13 +27,19 @@ mix
     processCssUrls: false
   });
 
+  
+  if (Mix.isWatching()) {
+    // Read drupal environment variables
+    require('dotenv').config({ path: '/app/.env' })
+  }
+
 /*
  |--------------------------------------------------------------------------
  * Browsersync: Watches CSS, JS and Twig
  |--------------------------------------------------------------------------
  */
 mix.browserSync({
-  proxy: "http://mydrupal9.lndo.site",
+  proxy: process.env.DRUPAL_URL,
   files: ['assets/js/**/*.js', 'assets/css/**/*.css', 'assets/components/**/*.css', 'assets/components/**/*.js', 'src/components/**/*.twig', 'templates/**/*.twig'],
   stream: true,
 });
