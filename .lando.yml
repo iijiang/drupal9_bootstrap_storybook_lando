@@ -3,6 +3,8 @@ recipe: drupal9
 proxy:
   appserver:
     - drupal9.lndo.site
+  cli:
+    - bs.lndo.site
 config:
   php: '7.3'
   composer_version: '2.0.7'
@@ -15,17 +17,16 @@ services:
   appserver:
     build:
       composer install
+  cli:
+    type: node:12
+    scanner: false
+    ssl: true
+    sslExpose: false
     overrides:
-      image: lando/php:7.3-with-node12
-      build:
-        context: ./
-        dockerfile: Dockerfile.node
-      ports: 
-        - 3000:3000
-        - 3001:3001
-        - 3004:3004 
+      ports:
+        - '3000:3000'
 tooling:
   node:
-    service: appserver
+    service: cli
   npm:
-    service: appserver
+    service: cli
