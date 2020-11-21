@@ -15,6 +15,9 @@ const proxy = require('./config/config.js');
 require('laravel-mix-copy-watched');
 require('laravel-mix-criticalcss');
 
+// Sorry, have to give lando drupal env path.
+const denv = "/app/.env"
+
 /*
  |--------------------------------------------------------------------------
  * Configuration
@@ -30,7 +33,7 @@ mix
   
   if (Mix.isWatching()) {
     // Read drupal environment variables
-    require('dotenv').config({ path: '/app/.env' })
+    require('dotenv').config({ path: denv })
   }
 
 /*
