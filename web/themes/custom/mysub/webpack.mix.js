@@ -11,12 +11,9 @@
 // * Imports the proxy from config.js to avoid conflicts
 const glob = require('glob')
 const mix = require('laravel-mix');
-// const proxy = require('./config/config.js');
+//const proxy = require('./config/config.js');
 require('laravel-mix-copy-watched');
 require('laravel-mix-criticalcss');
-
-// Sorry, have to give lando drupal env path.
-const denv = "/app/.env"
 
 /*
  |--------------------------------------------------------------------------
@@ -29,12 +26,6 @@ mix
   .options({
     processCssUrls: false
   });
-
-  
-  if (Mix.isWatching()) {
-    // Read drupal environment variables
-    require('dotenv').config({ path: denv })
-  }
 
 /*
  |--------------------------------------------------------------------------
@@ -96,7 +87,7 @@ mix.copyDirectoryWatched('src/fonts/**/*', 'assets/fonts');
 mix.criticalCss({
   enabled: mix.inProduction(),
   paths: {
-    base: proxy.proxy,
+    base: process.env.DRUPAL_URL,
     templates: './assets/css/critical/',
   },
   urls: [
