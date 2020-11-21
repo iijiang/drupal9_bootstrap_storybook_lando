@@ -11,7 +11,7 @@
 // * Imports the proxy from config.js to avoid conflicts
 const glob = require('glob')
 const mix = require('laravel-mix');
-const proxy = require('./config/config.js');
+// const proxy = require('./config/config.js');
 require('laravel-mix-copy-watched');
 require('laravel-mix-criticalcss');
 
