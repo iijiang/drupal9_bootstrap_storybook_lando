@@ -1,4 +1,4 @@
-# Infor
+# Info
 ```
 Drupal 9
 Composer 2+
