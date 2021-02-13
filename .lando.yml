@@ -1,5 +1,9 @@
 name: mydrupal9
 recipe: drupal9
+excludes:
+  - vendor
+  - node_modules
+  - web/modules/contrib
 proxy:
   appserver:
     - drupal9.lndo.site
